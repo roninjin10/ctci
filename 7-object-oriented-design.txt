@@ -1,0 +1,26 @@
+7.1 Deck Of Cards
+
+  CardObjects have two pieces of data
+    rank
+    suit
+
+    in python we can use some dunder methods to make syntax nice
+
+    for example we want to be able to say two_of_hearts < three_of_hearts because two of hearts is a lower rankA
+
+  DeckObjects
+    deck objects under the hood are a queue of cards.  We can feel safe representing a deck this way since card games made with physical cards tend to follow this model exactly
+    it shoudl have a shuffle method
+    it shoudl have visibility methods
+    it should have a draw method that draws n cards
+
+    you should be anle to init it as with or without jokers or short deck.
+
+    In blackjack case you  might want to increase the number of decks used
+
+  HandObjects
+    HandObjects are reprsented as a dynamic array
+    they may have associated metadata depending on the game when subclassed
+    the base class does basic things like swap cards, remove cards
+
+  Game Objects compose these together.  We don't subclass because inheritence is death

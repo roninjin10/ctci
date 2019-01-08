@@ -134,3 +134,4 @@ def sorted_listy_search(listy):
 
   return binary_search(as_array)
 
+Listy(['arr', 'ay'])
