@@ -1,4 +1,6 @@
+
 # 1.1 Is Unique
+
 
 def is_unique(str):
   # As a human, my algorithm is as follows.
@@ -14,16 +16,9 @@ def is_unique(str):
     seenChars.add(c)
   return true
 
-def is_unique(str):
-  # As a human, my algorithm is as follows:
-  # We want to look at ever char in sth str
-  # we will remember what we see via a set hash
-  # this will allow constant time lookups to see if we remember
-  # we will then return true if we find no dopops
 
+# 1.2 Check Permutation
 
-
-# Check Permutation
 
 from collections import defaultdict
 
@@ -67,6 +62,10 @@ def check_permutation(str1, str2):
 
   return counts_are_equal(counts)
 
+
+# 1.3 URLify
+
+
 def urlify(str):
   # As a human, my algorithm is as follows.
   # I look for spaces
@@ -74,6 +73,10 @@ def urlify(str):
 
   # We must be careful to escape %20s that aren't spaces first though
   return str.replace('%20', '\%20').replace(' ', '%20')
+
+
+# 1.4 Palindrome Permutation
+
 
 def palindrome_permutation(str):
   # dumb algo, find every permutation until you find a palindrome
@@ -98,6 +101,10 @@ def palindrome_permutation(str):
       is_odd_count = True
   return true
 
+
+# 1.5 One Away
+
+
 def one_away(str1, str2):
   # as a very dumb human I would just look through both strings attempting to make all three edits
   # we will have to spec them out seperately but if we do this and we find an match we are good
@@ -116,6 +123,10 @@ def one_away(str1, str2):
     return True
 
   return check_string_edit(str1, str2) or check_string_edit(str2, str1)
+
+
+# 1.6 String Compression
+
 
 def string_compression(str):
   # as a human I would follow the following algorithm
@@ -136,6 +147,10 @@ def string_compression(str):
       lastChar = c
 
   return out if len(out) < str else str
+
+
+# 1.7 Rotate Matrix
+
 
 # refactor this to be cleaner
 def rotate_matrix(matrix): # rotates in place
@@ -163,6 +178,10 @@ def rotate_matrix(matrix): # rotates in place
       matrix[size - 1 - i][j] = bottom_right
 
   return matrix
+
+
+# 1.8 Zero Matrix
+
 
 def zero_matrix(matrix):
   # as a human I am going to look through the entire matrix
@@ -196,6 +215,10 @@ def zero_matrix(matrix):
       out[i][j] = matrix[i][j] if not shouldBeZero(i, j, zeros) else 0
 
   return out
+
+
+# 1.9 Is String Rotation
+
 
 def is_string_rotation(str1, str2):
   # as a human I would go letter by letter down the string until I found a rotation
