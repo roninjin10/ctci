@@ -133,5 +133,3 @@ def sorted_listy_search(listy):
   as_array = listy_as_array(listy, last_index)
 
   return binary_search(as_array)
-
-Listy(['arr', 'ay'])
