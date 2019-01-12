@@ -169,6 +169,8 @@ def palindrome(head):
 
 
 # 2.7 Intersection
+
+
 def node_is_descendent(head, potential_descendent):
   current_node = head
   while(current_node):
@@ -181,3 +183,20 @@ def intersection(head1, head2):
   # to see if it intersects, I just remember the heads of the linked lists
   # I then traverse both until I see if the node exists
   return node_is_descendent(head1, head2) or node_is_descendent(head2, head1)
+
+
+# 2.8 Loop Detection
+
+
+def loop_detection(ll):
+  seen_nodes = set()
+
+  current_node = ll
+
+  while(current_node) {
+    if current_node in seen_nodes:
+      return current_node
+
+    current_node = current_node.next()
+  }
+
