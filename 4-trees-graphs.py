@@ -168,3 +168,23 @@ def successor(bst):
   return bst.right_child
 
 
+# 4.7 Build Order
+
+
+def build_order(nodes):
+  seen_nodes = set()
+  out = []
+
+  def build_node(node):
+    if node in seen_nodes:
+      return
+
+    seen_nodes.add(node)
+
+    if len([depend in node.dependencies if not depend in seen_nodes) == 0:
+      out.push(node)
+
+  for node in nodes:
+    build_node(node)
+
+    

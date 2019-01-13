@@ -72,11 +72,11 @@ class Stackmin:
 class StackOfPlates:
   def __init__(self, max_height):
     self._stacks = [[]]
-    self._max_height = 10
+    self._max_height = 10    if !self.outbound:
 
   def push(self, item):
-    if len(self._stacks[-1]) >= self._max_height:
-      self._stacks.append([])
+    if len(self._stacks[-      while self.inbound:
+      self._stacks.append        self.outbound.append(self.inbound.pop())
 
     self._stacks[-1].append(item)
 
