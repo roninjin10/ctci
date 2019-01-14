@@ -172,19 +172,78 @@ def successor(bst):
 
 
 def build_order(nodes):
-  seen_nodes = set()
+  processed_nodes = set()
+  processing_nodes = set()
   out = []
 
   def build_node(node):
+    if node in processing_nodes:
+      raise Exception('Circular dependency')
+
     if node in seen_nodes:
       return
 
-    seen_nodes.add(node)
+    processing_nodes.add(node)
 
-    if len([depend in node.dependencies if not depend in seen_nodes) == 0:
-      out.push(node)
+    # edges must be directed
+    for dependency in nodes.edges:
+      build_order(dependency)
+
+    out.append(node)
+
+    processing_nodes.remove(node)
+    processed_nodes.add(node)
 
   for node in nodes:
     build_node(node)
 
-    
+  return out.reverse()
+
+
+# 4.8 First Common Ancestor
+
+
+def first_common_ancestor(node1, node2):
+  # to do this without storing in an additional datastructure we just need to find the depth of the two nodes
+  # after finding the depth we then move the further down node up until they are on same level
+  # then we move them botht at the same time until they are on the same ancestor
+  def _first_common_ancestor(deep_node, shallow_node):
+    ancestor_1 = deep_node
+    ancestor_2 = shallow_node
+
+    for i in range(abs(depth_1 - depth_2)):
+      ancestor_1 = ancestor_1.parent
+
+    while ancestor_1 != ancestor_2:
+      ancestor_1 = ancestor_1.parent
+      ancestor_2 = ancestor_2.parent
+
+    return ancestor_1
+
+  depth_1 = find_depth_bt(node1)
+  depth_2 = find_depth_bt(node2)
+
+  args = node1, node2 if depth_1 > depth_2 else node2, node1
+
+  return _first_common_ancestor(*args)
+
+
+# 4.9 BST sequences
+
+# unfinished
+def bst_sequences(bst):
+  # we can generate every sequence kinda recursively
+  # we start with just root node in a set of potential next nodes
+  # whenever we pick a next node we delete that next node from the set and add all it's children
+  # the arrays that can lead to that bst are the concatanation of every order of next node
+
+  next_nodes = {bst}
+
+  def process_nodes(bst, next_nodes):
+    if len(next_nodes) == 0:
+      return []
+
+    out = []
+
+    for next_node in next_nodes:
+      out.append([next_node.value] + process_nodes())
